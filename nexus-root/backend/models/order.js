@@ -14,5 +14,4 @@ const orderSchema = new mongoose.Schema({
   userId: { type: String },
 }, { timestamps: true });
 
-// ✅ Only ONE export default
 export default mongoose.model("Order", orderSchema);

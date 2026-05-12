@@ -12,5 +12,4 @@ const productSchema = new mongoose.Schema({
   trend:    { type: Number, default: 0 },
 }, { timestamps: true });
 
-// ✅ Only ONE export default
 export default mongoose.model("Product", productSchema);
