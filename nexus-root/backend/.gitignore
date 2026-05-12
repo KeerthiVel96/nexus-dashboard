@@ -1,3 +1,4 @@
-.vercel
-.env*.local
-echo "*.env" >> .gitignore
+echo "backend.env" >> .gitignore
+echo ".env" >> .gitignore
+git add .gitignore
+git commit -m "Remove env files from tracking"

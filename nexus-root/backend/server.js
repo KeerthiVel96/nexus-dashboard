@@ -1,18 +1,18 @@
-const express    = require('express');
-const mongoose   = require('mongoose');
-const cors       = require('cors');
-const helmet     = require('helmet');
-const dotenv     = require('dotenv');
+import express    from 'express';
+import mongoose   from 'mongoose';
+import cors       from 'cors';
+import helmet     from 'helmet';
+import dotenv     from 'dotenv';
 
-const ordersRouter    = require('./routes/orders.js');
-const productsRouter  = require('./routes/products.js');
-const analyticsRouter = require('./routes/analytics.js');
+import ordersRouter    from './routes/orders.js';
+import productsRouter  from './routes/products.js';
+import analyticsRouter from './routes/analytics.js';
 
 dotenv.config();
 
 const app = express();
 
-// Root route
+// ✅ Root route
 app.get('/', (req, res) => {
   res.json({ message: 'Nexus Backend API is running! ✅' });
 });
@@ -75,4 +75,4 @@ if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => console.log(`Server running on ${PORT}`));
 }
 
-module.exports = app;
+export default app;
