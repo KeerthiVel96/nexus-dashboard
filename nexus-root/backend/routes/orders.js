@@ -1,5 +1,5 @@
 import { Router } from "express";
-import Order from "../models/Order.js";
+import Order from "../models/order.js";
 import { verifyToken } from "../middleware/auth.js";
 
 const router = Router();
