@@ -1,8 +1,8 @@
-import express     from "express";
-import mongoose    from "mongoose";
-import cors        from "cors";
-import helmet      from "helmet";
-import dotenv      from "dotenv";
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const helmet = require('helmet');
+const dotenv = require('dotenv');
 
 import ordersRouter    from "./routes/orders.js";
 import productsRouter  from "./routes/products.js";
@@ -11,12 +11,13 @@ import analyticsRouter from "./routes/analytics.js";
 dotenv.config();
 
 const app = express();
-
-// ── Middleware ──────────────────────────────────────────────
 // Health check route
 app.get("/", (req, res) => {
   res.json({ message: "Nexus Backend API is running!" });
 });
+
+// ── Middleware ──────────────────────────────────────────────
+
 app.use(helmet());
 app.use(cors({
   origin: [
