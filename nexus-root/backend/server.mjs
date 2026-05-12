@@ -4,10 +4,9 @@ const cors = require('cors');
 const helmet = require('helmet');
 const dotenv = require('dotenv');
 
-import ordersRouter    from "./routes/orders.js";
-import productsRouter  from "./routes/products.js";
-import analyticsRouter from "./routes/analytics.js";
-
+const ordersRouter    = require('./routes/orders.js');
+const productsRouter  = require('./routes/products.js');
+const analyticsRouter = require('./routes/analytics.js');
 dotenv.config();
 
 const app = express();
@@ -76,13 +75,13 @@ app.use((err, req, res, next) => {
 });
 
 // ── IMPORTANT: Export for Vercel — NO app.listen() ──────────
-export default app;
 
 
-// ✅ Add this at the bottom of server.js
-module.exports = app; // for Vercel serverless
+
 
 // Keep this for local dev
 if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => console.log(`Server running on ${PORT}`));
 }
+// ✅ Add this at the bottom of server.mjs
+module.exports = app; // for Vercel serverless
