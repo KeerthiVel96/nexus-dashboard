@@ -22,5 +22,19 @@ router.get("/revenue", verifyToken, async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
+router.get("/categories", verifyToken, async (req, res) => {
+  try {
+    const data = await Order.aggregate([
+      { $unwind: "$items" },
+      { $group: {
+        _id: "$items.category",
+        revenue: { $sum: "$items.price" }
+      }},
+      { $sort: { revenue: -1 } }
+    ]);
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 export default router;
